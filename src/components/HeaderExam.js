@@ -21,7 +21,7 @@ const HeaderExam = () => {
     useEffect(() => {
         const fetchTickets = async () => {
             try {
-                const allTickets = await axios("http://localhost:8080/tickets/all");
+                const allTickets = await axios("https://verify-certification-nft-production.up.railway.app/tickets/all");
                 const { ethereum } = window;
                 if (ethereum) {
                     const contract = new ethers.Contract(SOULBOUND_ADDRESS, SOULBOUND.abi, signer);
@@ -31,7 +31,7 @@ const HeaderExam = () => {
                             try {
                                 const result = await contract.getVerifiersByOrganizationCode(ticket.licensing_authority);
                                 if (result.includes(address)) {
-                                    const ticketFromOrg = await axios(`http://localhost:8080/tickets/${ticket.licensing_authority}`);
+                                    const ticketFromOrg = await axios(`https://verify-certification-nft-production.up.railway.app/tickets/${ticket.licensing_authority}`);
                                     if (Array.isArray(ticketFromOrg.data.tickets)) {
                                         newTickets = ticketFromOrg.data.tickets;
                                         break;

@@ -65,7 +65,7 @@ const AddIssuer = () => {
     useEffect(() => {
         const loadOrgDB = async () => {
             try {
-                const result = await axios.get("http://localhost:8080/organization");
+                const result = await axios.get("https://verify-certification-nft-production.up.railway.app/organization");
                 console.log(result.data.org)
                 if (Array.isArray(result.data.org)) {
                     setOrgs(result.data.org);
@@ -158,7 +158,7 @@ const AddIssuer = () => {
                 setMessageAlert("Create transaction successfully.Waiting to confirm");
                 setShowAlert(true);
                 await tx.wait();
-                await axios.post(`http://localhost:8080/addresses?address=${newAddress}`)
+                await axios.post(`https://verify-certification-nft-production.up.railway.app/addresses?address=${newAddress}`)
 
                 setLoading(false)
                 setAlertSeverity("success");
@@ -195,7 +195,7 @@ const AddIssuer = () => {
         console.log(org)
         // Your code to add a new issuer
         try {
-            const result = await axios.post("http://localhost:8080/organization", org)
+            const result = await axios.post("https://verify-certification-nft-production.up.railway.app/organization", org)
             if (result.data.message == "insert success") {
                 setAlertSeverity("success");
                 setMessageAlert("Add Organization successfully");
@@ -253,25 +253,25 @@ const AddIssuer = () => {
             setShowAlert(true);
             await tx.wait();
             //xóa ticket và hình ảnh chứng chỉ lquan đến issuer vừa xóa
-            const tickets = await axios(`http://localhost:8080/tickets/address?address=${address}`)
+            const tickets = await axios(`https://verify-certification-nft-production.up.railway.app/tickets/address?address=${address}`)
             tickets.data.tickets.map(async ticket => {
                 await deletePinIPFS(ticket.certificate_cid)
-                await axios.delete(`http://localhost:8080/tickets/address?address=${address}`)
+                await axios.delete(`https://verify-certification-nft-production.up.railway.app/tickets/address?address=${address}`)
             })
             const checkOrg = await contract.getVerifiersByOrganizationCode(getOrgFromIssuer)
             //kiểm tra có phải issuer cuối cùng bị xóa khỏi tổ chức
             if (checkOrg.length == 0) {
                 //xóa ticket lquan đến tổ chức vừa xóa
-                const tickets_from_org = await axios(`http://localhost:8080/tickets/${getOrgFromIssuer}`)
+                const tickets_from_org = await axios(`https://verify-certification-nft-production.up.railway.app/tickets/${getOrgFromIssuer}`)
                 tickets_from_org.data.tickets.map(async ticket => {
                     if (ticket.status == 'processing') {
                         await deletePinIPFS(ticket.certificate_cid)
-                        await axios.delete(`http://localhost:8080/tickets/address?address=${ticket.owner_address}`)
+                        await axios.delete(`https://verify-certification-nft-production.up.railway.app/tickets/address?address=${ticket.owner_address}`)
                     }
 
                 })
                 //xóa tổ chức
-                await axios.delete(`http://localhost:8080/organization?org=${getOrgFromIssuer}`)
+                await axios.delete(`https://verify-certification-nft-production.up.railway.app/organization?org=${getOrgFromIssuer}`)
             }
             setLoading(false)
             setAlertSeverity("success");

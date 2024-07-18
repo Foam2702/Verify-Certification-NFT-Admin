@@ -27,7 +27,7 @@ const Share = () => {
         console.log("HELLO");
 
         try {
-            const result = await axios(`http://localhost:8080/share/${id}?address=${address}`);
+            const result = await axios(`https://verify-certification-nft-production.up.railway.app/share/${id}?address=${address}`);
             console.log(result);
             if (result.data.message === "ticket doesn't exist" || result.data.data.length === 0) {
                 navigate("/");

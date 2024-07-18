@@ -41,7 +41,7 @@ export const Profile = () => {
 
         const fetchDataRegions = async () => {
             try {
-                const result = await axios("http://localhost:8080/tickets");
+                const result = await axios("https://verify-certification-nft-production.up.railway.app/tickets");
                 if (Array.isArray(result.data.cities)) {
                     setRegions(result.data.cities);
                 } else {
@@ -61,7 +61,7 @@ export const Profile = () => {
             try {
                 if (address) {
                     console.log(address)
-                    const response = await axios.get(`http://localhost:8080/addresses/${address}`);
+                    const response = await axios.get(`https://verify-certification-nft-production.up.railway.app/addresses/${address}`);
                     const data = response.data.address[0];
                     setUser(data)
                 }
@@ -83,7 +83,7 @@ export const Profile = () => {
     const insertPubToDB = async () => {
         if (address) {
             try {
-                const checkPublicKeyExisted = await axios.get(`http://localhost:8080/addresses/${address}`);
+                const checkPublicKeyExisted = await axios.get(`https://verify-certification-nft-production.up.railway.app/addresses/${address}`);
                 if (checkPublicKeyExisted.data.address.length === 0) {
                     const publicKey = await getPublicKey(); // Await the result of getPublicKey
                     if (publicKey.code === 4001 && publicKey.message === "User rejected the request.") {
@@ -93,7 +93,7 @@ export const Profile = () => {
                         setShowAlert(true);
                         return false;
                     }
-                    await axios.post(`http://localhost:8080/addresses/${address}`, {
+                    await axios.post(`https://verify-certification-nft-production.up.railway.app/addresses/${address}`, {
                         address: address, // Include the address in the body
                         publicKey: publicKey // Include the public key in the body
                     });
@@ -108,7 +108,7 @@ export const Profile = () => {
                             setShowAlert(true);
                             return false
                         }
-                        await axios.post(`http://localhost:8080/addresses/${address}`, {
+                        await axios.post(`https://verify-certification-nft-production.up.railway.app/addresses/${address}`, {
                             address: address, // Include the address in the body
                             publicKey: publicKey // Include the public key in the body
                         });
@@ -177,11 +177,11 @@ export const Profile = () => {
                 for (const field of fields) {
                     formData.append(field, data[field]);
                 }
-                const ownerPublicKeysResponse = await axios.get(`http://localhost:8080/addresses/${address}`)
+                const ownerPublicKeysResponse = await axios.get(`https://verify-certification-nft-production.up.railway.app/addresses/${address}`)
 
                 const publicKeyOwner = ownerPublicKeysResponse.data.address[0].publickey
 
-                const response = await axios.patch(`http://localhost:8080/addresses/profile/${address}`, {
+                const response = await axios.patch(`https://verify-certification-nft-production.up.railway.app/addresses/profile/${address}`, {
                     citizenId: await encryptData(data.citizenId, privateKey, remove0x(publicKeyOwner)),
                     name: await encryptData(data.name, privateKey, remove0x(publicKeyOwner)),
                     region: await encryptData(data.region, privateKey, remove0x(publicKeyOwner)),
@@ -248,7 +248,7 @@ export const Profile = () => {
             if (check) {
                 const privateKeyBytes = ethers.utils.arrayify(add0x(privatekey));
                 const publicKeyFromPrivateKey = ethers.utils.computePublicKey(privateKeyBytes);
-                const ownerPublicKeysResponse = await axios.get(`http://localhost:8080/addresses/${address}`)
+                const ownerPublicKeysResponse = await axios.get(`https://verify-certification-nft-production.up.railway.app/addresses/${address}`)
                 if (ownerPublicKeysResponse.data.address.length === 0) {
                     return;
                 }
@@ -286,7 +286,7 @@ export const Profile = () => {
     const handleDecryptInfo = async (prop, privateKey) => {
         if (prop != null && prop != '' && prop != undefined) {
             try {
-                const ownerPublicKeysResponse = await axios.get(`http://localhost:8080/addresses/${address}`)
+                const ownerPublicKeysResponse = await axios.get(`https://verify-certification-nft-production.up.railway.app/addresses/${address}`)
                 if (ownerPublicKeysResponse.data.address.length === 0) {
                     return;
                 }
