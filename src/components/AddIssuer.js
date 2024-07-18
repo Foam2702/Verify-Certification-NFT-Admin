@@ -188,6 +188,28 @@ const AddIssuer = () => {
         const formData = new FormData(event.currentTarget);
         const formJson = Object.fromEntries(formData.entries());
         const newOrganization = formJson.organization;
+        if (!file) {
+            setLoading(false)
+            setMessageAlert(`Please upload logo.`);
+            setAlertSeverity("warning");
+            setShowAlert(true);
+
+            return
+        }
+        // const fields = [
+        //     'organization', 'imageCertificate'
+        // ];
+
+        // for (const field of fields) {
+
+        //     if (!formJson[field]) {
+        //         setMessageAlert(`Please fill out the ${field} field.`);
+        //         setAlertSeverity("warning");
+        //         setShowAlert(true);
+        //         setLoading(false);
+        //         return;
+        //     }
+        // }
         const org = {
             newOrganization,
             imageUrl
