@@ -77,7 +77,7 @@ const AddIssuer = () => {
             }
         };
         loadOrgDB();
-    }, []);
+    }, [refresh]);
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const columns = [
@@ -449,7 +449,7 @@ const AddIssuer = () => {
                             className="example-here"
                             name="imageCertificate"
                             type="file"
-                            accept=".jpg"
+                            accept=".jpg, .png"
                             multiple
                             onChange={onfileChange}
                         />
