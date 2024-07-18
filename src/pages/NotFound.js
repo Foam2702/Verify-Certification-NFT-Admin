@@ -7,10 +7,10 @@ const NotFound = () => (
             src="https://www.pngitem.com/pimgs/m/561-5616833_image-not-found-png-not-found-404-png.png"
             alt="not-found"
         />
-        <Link to="/" className="go-home">
+        {/* <Link to="/" className="go-home">
 
             Go Home
-        </Link>
+        </Link> */}
     </div>
 );
 
