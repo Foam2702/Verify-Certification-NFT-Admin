@@ -22,6 +22,9 @@ const Admin = () => {
                 navigate("*")
             }
         }
+        else {
+            navigate("/")
+        }
 
     }, [address, signer])
 
@@ -31,7 +34,12 @@ const Admin = () => {
             <HeaderSection />
 
             <AddIssuerSection />
-            <AddIssuer />
+            {address && address == adminAddress ?
+                <AddIssuer />
+                :
+                <div></div>
+
+            }
             <Footer
                 shapeLeft="/shape-left1.svg"
                 socialIcontwitter="/socialicontwitter1.svg"
