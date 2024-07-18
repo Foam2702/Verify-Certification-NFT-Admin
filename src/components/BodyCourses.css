@@ -1,0 +1,108 @@
+.body-header-text5 {
+    margin: 50px;
+    height: 69px;
+    width: 515px;
+    position: relative;
+    font-size: inherit;
+    letter-spacing: -0.03em;
+    line-height: 56px;
+    font-weight: 600;
+    font-family: var(--font-roboto);
+    display: flex;
+    flex-shrink: 0;
+    max-width: 100%;
+    justify-content: center;
+}
+
+.body-header3 {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 var(--padding-xl);
+    box-sizing: border-box;
+}
+
+.body-header3,
+.body-section2,
+.careers-section1 {
+    align-self: center;
+    display: flex;
+    max-width: 100%;
+}
+
+.careers-section1 {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--padding-295xl);
+    box-sizing: border-box;
+    /* min-height: 1123px; */
+    gap: var(--gap-xl);
+    font-size: var(--font-size-5xl);
+}
+
+.body-section2 {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-71xl);
+    text-align: left;
+    font-size: var(--font-size-29xl);
+    color: var(--color-gray);
+    font-family: var(--font-roboto);
+}
+
+.search-bar-container {
+    padding-top: 3vh;
+    padding-bottom: 1vh;
+    width: 20%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 200px;
+}
+
+
+@media screen and (max-width: 1225px) {
+    .careers-section1 {
+        padding-left: var(--padding-138xl);
+        padding-right: var(--padding-138xl);
+        box-sizing: border-box;
+    }
+
+    .body-section2 {
+        gap: var(--gap-26xl);
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .body-header-text5 {
+        font-size: var(--font-size-19xl);
+        line-height: 45px;
+    }
+
+    .careers-section1 {
+        padding-left: var(--padding-59xl);
+        padding-right: var(--padding-59xl);
+        box-sizing: border-box;
+    }
+
+    .body-section2 {
+        gap: var(--gap-3xl);
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .body-header-text5 {
+        font-size: var(--font-size-10xl);
+        line-height: 34px;
+    }
+
+    .careers-section1 {
+        padding-left: var(--padding-xl);
+        padding-right: var(--padding-xl);
+        box-sizing: border-box;
+    }
+}

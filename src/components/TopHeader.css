@@ -1,0 +1,198 @@
+.abc2 {
+  margin: 0;
+  height: 49px;
+  flex: 1;
+  position: relative;
+  font-size: inherit;
+  letter-spacing: -0.03em;
+  line-height: 30px;
+  font-weight: 500;
+  font-family: var(--font-roboto);
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.fickleflight-logo-frame,
+.fickleflight-logo2 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.fickleflight-logo2 {
+  align-self: stretch;
+  height: 33px;
+  overflow: hidden;
+  flex-shrink: 0;
+  flex-direction: row;
+  padding: 0 var(--padding-5xl) 0 var(--padding-7xl);
+}
+
+.fickleflight-logo-frame {
+  width: 174px;
+  flex-direction: column;
+  padding: var(--padding-sm-8) 0 0;
+}
+
+.explore2,
+.hotels2,
+.offers2,
+.search2 {
+  position: relative;
+  display: inline-block;
+}
+
+.explore2 {
+  color: var(--color-cornflowerblue);
+  min-width: 47px;
+}
+
+.hotels2,
+.offers2,
+.search2 {
+  min-width: 43px;
+}
+
+.hotels2,
+.offers2 {
+  min-width: 41px;
+}
+
+.offers2 {
+  min-width: 39px;
+}
+
+.navigation-menu2 {
+  margin: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--padding-xl) 0;
+  gap: var(--gap-xl);
+  text-align: left;
+  font-size: var(--font-size-sm);
+  color: var(--color-darkslategray-100);
+  font-family: var(--font-roboto);
+}
+
+.hamburger-menu-icon2 {
+  display: none;
+}
+
+.hamburger-menu-icon2,
+.notification-bell-icon2 {
+  height: 24px;
+  width: 24px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.profile-picture-icon2 {
+  position: absolute;
+  top: 0;
+  left: 4px;
+  width: 28.8px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.profile-background2 {
+  position: absolute;
+  top: 2.5px;
+  left: 0;
+  border-radius: var(--br-12xl);
+  background-color: var(--color-darkorange-200);
+  width: 36px;
+  height: 34.1px;
+  z-index: 1;
+}
+
+.profile2 {
+  height: 36.6px;
+  width: 36px;
+  position: relative;
+}
+
+.account-section2,
+.button3,
+.navigation-right2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.button3 {
+  align-items: flex-start;
+  padding: var(--padding-xs) var(--padding-base);
+}
+
+.account-section2,
+.navigation-right2 {
+  align-items: center;
+  gap: var(--gap-xs);
+}
+
+.navigation-right2 {
+  width: 400px;
+  justify-content: flex-end;
+  gap: var(--gap-17xl);
+  max-width: 100%;
+}
+
+.top-container2,
+.top-header2 {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  max-width: 100%;
+}
+
+.top-container2 {
+  flex: 1;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+}
+
+.top-header2 {
+  align-self: stretch;
+  background-color: var(--studio-darkmode-allwhite-ffffff);
+  justify-content: flex-start;
+  padding: var(--padding-4xs-2) var(--padding-61xl);
+  box-sizing: border-box;
+  top: 0;
+  z-index: 99;
+  position: sticky;
+  text-align: left;
+  font-size: var(--font-size-5xl);
+  color: var(--color-gray);
+  font-family: var(--font-roboto);
+}
+
+@media screen and (max-width: 1200px) {
+  .top-header2 {
+    padding-left: var(--padding-21xl);
+    padding-right: var(--padding-21xl);
+    box-sizing: border-box;
+  }
+}
+
+@media screen and (max-width: 825px) {
+  .navigation-menu2 {
+    display: none;
+  }
+
+  .navigation-right2 {
+    width: 140px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .navigation-right2 {
+    gap: var(--gap-lg);
+  }
+}

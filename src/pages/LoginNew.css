@@ -1,0 +1,109 @@
+.body-header-text,
+.body-header-text1 {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.body-header-text {
+  margin: auto;
+  /* width: 1400px; */
+  height: auto;
+  font-size: var(--font-size-45xl);
+  letter-spacing: -0.03em;
+  /* line-height: 10px; */
+  font-weight: 700;
+  font-family: var(--font-roboto);
+  flex-shrink: 0;
+}
+
+.body-header-text1 {
+  width: 1000px;
+  font-size: var(--font-size-10xl);
+  line-height: 40px;
+  font-weight: 700;
+  color: var(--color-dimgray-100);
+  text-align: center;
+  /* Thêm dòng này để căn giữa văn bản */
+}
+
+.body-header-1 {
+  align-self: stretch;
+  /* padding: 0 var(--padding-xl) 0 551px; */
+  box-sizing: border-box;
+  gap: 88px;
+  max-width: 100%;
+}
+
+.body-header-1,
+.body-section,
+.loginnew {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.body-section {
+  align-self: stretch;
+  gap: 84.5px;
+  flex-shrink: 0;
+  debug_commit: 1de1738;
+  max-width: 100%;
+  z-index: 1;
+  margin-top: -2px;
+  text-align: left;
+  font-size: var(--font-size-17xl);
+  color: var(--color-darkslategray-200);
+  font-family: var(--font-roboto);
+}
+
+.loginnew {
+  width: 100%;
+  position: relative;
+  background-color: var(--studio-darkmode-allwhite-ffffff);
+  overflow: hidden;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+@media screen and (max-width: 1275px) {
+  .body-header-1 {
+    /* padding-left: 275px; */
+    box-sizing: border-box;
+  }
+
+  .body-section {
+    gap: 42px;
+  }
+}
+
+@media screen and (max-width: 825px) {
+  .body-header-text {
+    font-size: var(--font-size-10xl);
+    line-height: 45px;
+  }
+
+  .body-header-1 {
+    gap: 44px;
+    /* padding-left: 137px; */
+    box-sizing: border-box;
+  }
+
+  .body-section {
+    gap: var(--gap-2xl);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .body-header-text {
+    font-size: var(--font-size-3xl);
+    line-height: 34px;
+  }
+
+  .body-header-1 {
+    gap: var(--gap-3xl);
+    /* padding-left: var(--padding-xl); */
+    box-sizing: border-box;
+  }
+}

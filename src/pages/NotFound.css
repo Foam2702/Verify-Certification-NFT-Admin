@@ -1,0 +1,39 @@
+.not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* This will take the full height of the viewport */
+    text-align: center;
+    /* Center the text for smaller elements */
+}
+
+.go-home {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    /* Adjust as needed */
+    background-color: #007bff;
+    /* Bootstrap primary color */
+    color: #ffffff;
+    /* White text */
+    text-decoration: none;
+    /* Remove underline */
+    border-radius: 5px;
+    /* Rounded corners */
+    font-weight: bold;
+    /* Make text bold */
+    transition: background-color 0.2s;
+    /* Smooth background color transition */
+}
+
+.go-home:hover,
+.go-home:focus {
+    background-color: #0056b3;
+    /* Darker shade on hover/focus */
+    color: #ffffff;
+    /* Ensure text remains white */
+    text-decoration: none;
+    /* Remove underline on hover/focus */
+}

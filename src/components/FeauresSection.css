@@ -1,0 +1,161 @@
+.body-header-2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  box-sizing: border-box;
+  font-size: var(--font-size-45xl);
+  letter-spacing: -0.03em;
+  /* line-height: 10px; */
+  font-weight: 700;
+  font-family: var(--font-roboto);
+}
+
+/* .body-header-2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
+
+.popular-ceriti {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+
+}
+
+.see-all {
+  font-size: var(--font-size-10xl);
+  box-sizing: border-box;
+}
+
+.course-background {
+  width: 100%;
+  height: 500px;
+  /* Điều chỉnh chiều cao của khung khóa học */
+  border-radius: 16px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  /* Adjust the blur and opacity as needed */
+  box-sizing: border-box;
+  /* Điều chỉnh bán kính đường viền */
+  background-color: var(--color-aliceblue-100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.lorem-ipsum-dolor {
+  flex: 1;
+  position: relative;
+  line-height: 28px;
+  font-weight: 500;
+  display: inline-block;
+  max-width: 100%;
+  z-index: 1;
+}
+
+
+.icon3 {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+.icon3 {
+  width: 22px;
+  height: 10px;
+  object-fit: cover;
+}
+
+.course {
+  cursor: pointer;
+  display: inline-block;
+  width: 401px;
+  /* Đảm bảo rằng kích thước của course là cố định */
+  margin: 100px;
+  /* Điều chỉnh margin giữa các khóa học */
+}
+
+.feaures-section {
+  overflow: hidden;
+  /* Ẩn phần tràn để cuộn mượt mà */
+  background-color: var(--color-aliceblue-100);
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: var(--padding-24xl) 0;
+  gap: var(--gap-114xl);
+  text-align: left;
+  font-size: var(--font-size-17xl);
+  color: var(--color-darkslategray-200);
+  font-family: var(--font-roboto);
+}
+
+.list-courses {
+  display: flex;
+  animation: slide 120s linear infinite;
+  /* 20s có thể điều chỉnh cho tốc độ */
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-46%);
+  }
+}
+
+@media screen and (max-width: 1575px) {
+  .list-courses {
+    justify-content: center;
+    animation: slide 70s linear infinite;
+  }
+}
+
+@media screen and (max-width: 1275px) {
+
+  .firstcourse,
+  .secondcourse,
+  .thirdcousr {
+    flex: 1;
+  }
+
+  .list-courses {
+    padding-left: var(--padding-66xl);
+    padding-right: var(--padding-66xl);
+    box-sizing: border-box;
+    animation: slide 70s linear infinite;
+  }
+
+  .feaures-section {
+    gap: var(--gap-47xl);
+  }
+}
+
+@media screen and (max-width: 825px) {
+
+
+  .firstcourse,
+  .secondcourse,
+  .thirdcousr {
+    min-width: 100%;
+    animation: slide 70s linear infinite;
+  }
+
+  .list-courses {
+    padding-left: var(--padding-23xl);
+    padding-right: var(--padding-23xl);
+    box-sizing: border-box;
+    animation: slide 70s linear infinite;
+  }
+
+  .feaures-section {
+    gap: var(--gap-14xl);
+    padding-top: var(--padding-3xl);
+    padding-bottom: var(--padding-9xl);
+    box-sizing: border-box;
+  }
+}

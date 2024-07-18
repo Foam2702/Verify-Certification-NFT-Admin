@@ -1,0 +1,12 @@
+.question-exam,
+.post-exam {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-10xl);
+    letter-spacing: -0.03em;
+    line-height: 56px;
+    font-weight: 600;
+    font-family: var(--font-roboto);
+}

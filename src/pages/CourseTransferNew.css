@@ -1,0 +1,23 @@
+.coursetransfernew {
+  width: 100%;
+  position: relative;
+  background-color: var(--studio-darkmode-allwhite-ffffff);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-65xl-5);
+  line-height: normal;
+  letter-spacing: normal;
+}
+@media screen and (max-width: 1225px) {
+  .coursetransfernew {
+    gap: var(--gap-23xl);
+  }
+}
+@media screen and (max-width: 850px) {
+  .coursetransfernew {
+    gap: var(--gap-2xl);
+  }
+}

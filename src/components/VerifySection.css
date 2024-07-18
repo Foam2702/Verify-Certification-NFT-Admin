@@ -1,0 +1,122 @@
+.title-12 {
+    margin: 0;
+    align-self: stretch;
+    position: relative;
+    font-size: inherit;
+    letter-spacing: -0.03em;
+    line-height: 72px;
+    font-weight: 600;
+    font-family: var(--font-roboto);
+    width: 700px;
+}
+
+.title-22 {
+    width: 557px;
+    position: relative;
+    font-size: var(--font-size-lg);
+    line-height: 30px;
+    font-weight: 500;
+    color: var(--color-dimgray-100);
+    display: inline-block;
+    max-width: 100%;
+}
+
+.titles2 {
+    width: 618px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-30xl);
+    min-width: 618px;
+    max-width: 100%;
+}
+
+.approve-image-icon1 {
+    height: 500px;
+    flex: 1;
+    position: relative;
+    border-radius: var(--br-xl);
+    max-width: 100%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.approve-image1 {
+    width: 500px;
+    flex-direction: row;
+    justify-content: center;
+    padding: var(--padding-xl) 0;
+    box-sizing: border-box;
+    min-width: 500px;
+}
+
+.approve-image1,
+.header-container2,
+.header-content2 {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+}
+
+.header-content2 {
+    width: 1392px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--gap-xl);
+}
+
+.header-container2 {
+    align-self: stretch;
+    background-color: var(--color-aliceblue-200);
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: var(--padding-21xl) var(--padding-xl);
+    box-sizing: border-box;
+    text-align: left;
+    font-size: var(--font-size-45xl);
+    color: var(--color-darkslategray-200);
+    font-family: var(--font-roboto);
+}
+
+@media screen and (max-width: 1200px) {
+
+    .approve-image-icon1,
+    .approve-image1,
+    .titles2 {
+        flex: 1;
+    }
+
+    .header-content2 {
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 825px) {
+    .title-12 {
+        font-size: var(--font-size-32xl);
+        line-height: 58px;
+    }
+
+    .titles2 {
+        gap: var(--gap-5xl);
+    }
+
+    .approve-image1,
+    .titles2 {
+        min-width: 100%;
+    }
+
+    .header-container2 {
+        padding-top: var(--padding-7xl);
+        padding-bottom: var(--padding-7xl);
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .title-12 {
+        font-size: var(--font-size-19xl);
+        line-height: 43px;
+    }
+}
