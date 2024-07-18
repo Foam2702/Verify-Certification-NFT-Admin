@@ -82,8 +82,8 @@ function App() {
         )}
 
         <Routes>
-          <Route path="/" element={<LoginNew />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/" element={<Admin />} />
+          {/* <Route path="/admin" element={<Admin />} /> */}
           <Route path="*" element={<NotFound />} />
 
         </Routes>

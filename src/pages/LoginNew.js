@@ -7,6 +7,7 @@ import "./LoginNew.css";
 import { motion } from "framer-motion";
 import useSigner from "../state/signer";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react"
 
 const LoginNew = () => {
   const { address, signer } = useSigner();
