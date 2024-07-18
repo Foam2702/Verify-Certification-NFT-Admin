@@ -56,7 +56,6 @@ const AddIssuer = () => {
                     });
                 }
                 console.log(results)
-
                 setIssuers(results)
             }
         }
@@ -249,6 +248,17 @@ const AddIssuer = () => {
 
     }
     const onfileChange = async (event) => {
+        const file = event.target.files[0]
+        const validFileTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+        if (file && !validFileTypes.includes(file.type)) {
+            setAlertSeverity("warning");
+            setMessageAlert("Just accept png, jpeg and png");
+            setShowAlert(true);
+            // Optionally, you can clear the input
+            event.target.value = '';
+            return
+
+        };
         setFile(event.target.files);
         if (event.target.files.length > 0) {
             const file = event.target.files[0];
@@ -449,7 +459,7 @@ const AddIssuer = () => {
                             className="example-here"
                             name="imageCertificate"
                             type="file"
-                            accept=".jpg, .png"
+                            accept=".jpg, .png, .jpeg"
                             multiple
                             onChange={onfileChange}
                         />
