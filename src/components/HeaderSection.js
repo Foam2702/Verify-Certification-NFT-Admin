@@ -18,11 +18,10 @@ import "./BasicMenu.css";
 import "./HeaderSection.css";
 const { ethers } = require("ethers");
 
-const settings = [
-  { name: 'Profile', route: '/profile' },
+// const settings = [
+//   { name: 'Profile', route: '/profile' },
 
-  { name: 'Issuer Management', route: '/admin' },
-];
+// ];
 
 const HeaderSection = () => {
   const SOULBOUND_ADDRESS = process.env.REACT_APP_SOULBOUND_ADDRESS;
@@ -227,9 +226,9 @@ const HeaderSection = () => {
     checkAdmin()
   }, [signer, address])
 
-  const filteredSettings = address === process.env.REACT_APP_ADMIN
-    ? settings
-    : settings.filter((setting) => setting.name !== 'Issuer Management');
+  // const filteredSettings = address === process.env.REACT_APP_ADMIN
+  //   ? settings
+  //   : settings.filter((setting) => setting.name !== 'Issuer Management');
 
   return (
     <section className="header-section1">
@@ -282,13 +281,13 @@ const HeaderSection = () => {
                       open={Boolean(anchorElUser)}
                       onClose={handleCloseUserMenu}
                     >
-                      {filteredSettings.map((setting) => (
+                      {/* {filteredSettings.map((setting) => (
                         <MenuItem key={setting.name} onClick={() => handleMenuItemClick(setting.route)} sx={{ my: 1 }}>
                           <Typography textAlign="center" sx={{ fontSize: '1.3rem' }}>
                             {setting.name}
                           </Typography>
                         </MenuItem>
-                      ))}
+                      ))} */}
                     </Menu>
                   </>
                 ) : (
