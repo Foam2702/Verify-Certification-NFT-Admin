@@ -392,6 +392,7 @@ const AddIssuer = () => {
                     />
                     <InputLabel id="demo-simple-select-label">Organization</InputLabel>
                     <Select
+                        required
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         value={org}
