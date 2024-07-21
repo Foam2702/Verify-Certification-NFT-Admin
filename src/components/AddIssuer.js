@@ -148,6 +148,7 @@ const AddIssuer = () => {
             setAlertSeverity("error");
             setMessageAlert("Issuer with this address already exists.");
             setShowAlert(true);
+            setLoading(false)
         } else {
             // Your code to add a new issuer
             try {
