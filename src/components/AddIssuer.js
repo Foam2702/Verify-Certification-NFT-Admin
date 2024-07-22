@@ -42,11 +42,6 @@ const AddIssuer = () => {
     const [orgs, setOrgs] = useState([])
     const [org, setOrg] = useState('')
     const [tab, setTab] = React.useState('issuersTab');
-    const [certificateOpen, setCertificateOpen] = useState(false)
-    const [orgsRow, setOrgsRow] = useState([])
-    const [certificates, setCertificates] = useState([])
-    const [certificatesRow, setCertificatesRow] = useState([])
-
     useEffect(() => {
         const fetchIssuers = async () => {
             if (signer && contract) {
@@ -81,21 +76,7 @@ const AddIssuer = () => {
         //     }
         // }
         // convertOrgToRow()
-        const converCertiToRow = async () => {
-            if (certificates.length > 0) {
-                let idCounter = 1; // initialize counter
-                const results = [];
-                certificates.forEach(certificate => {
-                    results.push({
-                        id: idCounter++, // use the counter as id and increment it
-                        certificate: certificate.certificate,
-                        organization: certificate.org
-                    });
-                });
-                setCertificatesRow(results)
-            }
-        }
-        converCertiToRow()
+
     }, [refresh, address, signer, tab])
     useEffect(() => {
         const loadOrgDB = async () => {
@@ -111,19 +92,6 @@ const AddIssuer = () => {
             }
         };
         loadOrgDB();
-        const loadCertiDB = async () => {
-            try {
-                const result = await axios.get("https://verify-certification-nft-production.up.railway.app/tickets");
-                if (Array.isArray(result.data.certificates)) {
-                    setCertificates(result.data.certificates);
-                } else {
-                    console.error('Fetched certificate data is not an array', result.data.certificates);
-                }
-            } catch (error) {
-                console.error('Error fetching certificate data', error);
-            }
-        }
-        loadCertiDB()
 
 
     }, [refresh]);
@@ -185,35 +153,7 @@ const AddIssuer = () => {
     //         }
     //     },
     // ];
-    const columnsCertificate = [
-        { field: "id", headerName: "ID" },
-        {
-            field: "certificate",
-            headerName: "Certificate",
-            flex: 2,
-            cellClassName: "name-column--cell",
-        },
-        {
-            field: "organization",
-            headerName: "Organization",
-            flex: 2,
-        },
-        {
-            field: 'delete',
-            headerName: 'Status',
-            sortable: false,
-            flex: 0.5,
-            width: 100,
-            disableClickEventBubbling: true,
-            renderCell: (params) => {
-                return (
-                    <Button variant="contained" color="error" startIcon={<DeleteIcon />} sx={{ fontSize: "0.7em " }} onClick={() => handleDeleteCertificate(params.row.certificate, params.row.organization)}>
-                        DELETE
-                    </Button>
-                );
-            }
-        },
-    ];
+
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -359,36 +299,6 @@ const AddIssuer = () => {
     // const handleDeleteOrg = async (organization) => {
     //     console.log(organization)
     // }
-    const handleDeleteCertificate = async (certificate, org) => {
-        try {
-            const result = await axios.delete(`https://verify-certification-nft-production.up.railway.app/certificate?certificate=${certificate}&org=${org}`)
-            if (result.data.message == "Certificate deleted") {
-                setAlertSeverity("success");
-                setMessageAlert("Deleted Certificate successfully");
-                setShowAlert(true);
-                setLoading(false)
-                setRefresh(prevFlag => !prevFlag)
-
-            }
-            else if (result.data.message == "Certificate not found") {
-                setAlertSeverity("warning");
-                setMessageAlert("Certificate not found");
-                setShowAlert(true);
-                setLoading(false)
-            }
-            else {
-                setAlertSeverity("warning");
-                setMessageAlert("Something went wrong");
-                setShowAlert(true);
-                setLoading(false)
-            }
-        } catch (err) {
-            setAlertSeverity("error");
-            setMessageAlert("Error");
-            setShowAlert(true);
-            setLoading(false)
-        }
-    }
     const handleDelete = async (address) => {
         try {
             setLoading(true)
@@ -440,56 +350,10 @@ const AddIssuer = () => {
             console.log(err)
         }
     }
-    const handleClickOpenCerti = () => {
-        setCertificateOpen(true)
-    }
+
     const handleChangeTab = (event, newValue) => {
         setTab(newValue);
     };
-    const handleCloseCertificate = () => {
-        setCertificateOpen(false)
-    }
-    const handleSubmitCertificate = async (event) => {
-        event.preventDefault()
-        setLoading(true)
-        const formData = new FormData(event.currentTarget);
-        const formJson = Object.fromEntries(formData.entries());
-        const newCertificate = formJson.certificate;
-        const certificate = {
-            certificate: newCertificate,
-            org
-        }
-
-        try {
-            const result = await axios.post(`https://verify-certification-nft-production.up.railway.app/certificate`, certificate)
-            console.log(result)
-            if (result.data.message == "Certificate inserted") {
-                setAlertSeverity("success");
-                setMessageAlert("Add Certificate successfully");
-                setShowAlert(true);
-                setLoading(false)
-                setRefresh(prevFlag => !prevFlag)
-            }
-            else if (result.data.message == "Certificate already exists") {
-                setAlertSeverity("warning");
-                setMessageAlert("Certificate already exists");
-                setShowAlert(true);
-                setLoading(false)
-            }
-            else {
-                setAlertSeverity("warning");
-                setMessageAlert("Something went wrong");
-                setShowAlert(true);
-                setLoading(false)
-            }
-        } catch (err) {
-            setAlertSeverity("error");
-            setMessageAlert("Error");
-            setShowAlert(true);
-            setLoading(false)
-        }
-        handleCloseCertificate();
-    }
     return (
         <>
             {loading && (
@@ -507,7 +371,6 @@ const AddIssuer = () => {
                         aria-label="secondary tabs example"
                     >
                         <Tab value="issuersTab" label="Issuers" sx={{ fontSize: "1em" }} />
-                        <Tab value="certificatesTab" label="Certificates" sx={{ fontSize: "1em" }} />
                     </Tabs>
                 </Box>
             </Box>
@@ -524,12 +387,7 @@ const AddIssuer = () => {
                         </Button>
                     </div>
                 }
-                {tab == 'certificatesTab' &&
-                    <Button variant="contained" color="success" sx={{ my: "20px", fontSize: "1em" }} onClick={handleClickOpenCerti}>
-                        <AddIcon />
-                        NEW CERTIFICATE
-                    </Button>
-                }
+
 
                 <Tooltip title="Refresh" sx={{ mx: '20px' }}>
                     <IconButton size="large" onClick={() => setRefresh(prevFlag => !prevFlag)}>
@@ -663,68 +521,8 @@ const AddIssuer = () => {
                     <Button onClick={handleCloseOrg}>Cancel</Button>
                 </DialogActions>
             </Dialog>
-            {/* Open Certificate */}
-            <Dialog
-                open={certificateOpen}
-                onClose={handleCloseCertificate}
-                PaperProps={{
-                    component: 'form',
-                    onSubmit: handleSubmitCertificate
 
-                }}
 
-                maxWidth="md" // Adjust this value as needed (sm, md, lg, xl)
-                sx={{
-                    '& .MuiDialogContent-root': { fontSize: '1.25rem' }, // Adjust font size for dialog content
-                    '& .MuiTextField-root': { fontSize: '1.25rem' }, // Adjust font size for text fields
-                    '& .MuiButton-root': { fontSize: '1.25rem' }, // Adjust font size for buttons
-                }}
-            >
-                <DialogTitle sx={{ fontSize: '1.5rem' }}>New Certificate</DialogTitle>
-                <DialogContent>
-                    <DialogContentText sx={{ fontSize: '1.5rem' }}>
-                        To add new certificate , please enter certificate name and select organization.
-                    </DialogContentText>
-                    <TextField
-                        autoFocus
-                        required
-                        margin="normal"
-                        id="name"
-                        name="certificate"
-                        label="Certificate name"
-                        fullWidth
-                        variant="outlined"
-                        sx={{
-                            '& .MuiInputBase-input': {
-                                fontSize: '1.25rem', // Increase font size
-                            },
-                            '& .MuiInputLabel-root': {
-                                fontSize: '1.25rem', // Increase label font size
-                            },
-
-                        }}
-                    />
-                    <Select
-                        required
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={org}
-                        fullWidth
-                        label="Organization"
-                        onChange={handleChangeOrg}
-                    >
-                        {orgs.map((organization) => (
-                            <MenuItem value={organization.org}>{organization.org}</MenuItem>
-                        ))}
-                    </Select>
-
-                </DialogContent>
-                <DialogActions>
-                    <Button type="submit">Add</Button>
-
-                    <Button onClick={handleCloseCertificate}>Cancel</Button>
-                </DialogActions>
-            </Dialog>
             <Box m="20px">
                 <Box
                     m="40px 0 0 0"
@@ -759,8 +557,7 @@ const AddIssuer = () => {
                     {tab == 'issuersTab' &&
                         <DataGrid rows={issuers} columns={columns} />}
 
-                    {tab == 'certificatesTab' &&
-                        <DataGrid rows={certificatesRow} columns={columnsCertificate} />}
+
 
                 </Box>
             </Box>
